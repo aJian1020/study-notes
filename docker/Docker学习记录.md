@@ -119,7 +119,145 @@ hello-world         latest              bf756fb1ae65        10 months ago       
 
 ###### Deepin20安装
 
+> 官方文档：https://docs.docker.com/engine/install/debian/环境准备
+
+> 环境准备
+
+```shell
+# 1.查看系统内核
+bj9971020@bj9971020-PC:~$ uname -r
+5.4.50-amd64-desktop
+# 2.查看系统版本
+bj9971020@bj9971020-PC:~$ cat /etc/os-release
+PRETTY_NAME="Deepin 20"
+NAME="Deepin"
+VERSION_ID="20"
+VERSION="20"
+ID=Deepin
+HOME_URL="https://www.deepin.org/"
+BUG_REPORT_URL="https://bbs.deepin.org/"
+```
+
+> 安装步骤
+
+```shell
+# 1.删除旧的docker引擎
+bj9971020@bj9971020-PC:~$ sudo apt-get remove docker docker-engine docker.io containerd runc
+
+# 2.更新beepin系统安装包状态(这里不会真正的更新安装包，只是看看有没有安装包需要更新)
+bj9971020@bj9971020-PC:~$ sudo apt-get update
+
+# 3.安装所需要的包
+bj9971020@bj9971020-PC:~$ sudo apt-get install \
+     apt-transport-https \
+     ca-certificates \
+     curl \
+     gnupg-agent \
+     software-properties-common
+# 4.添加 Docker 的官方 GPG 密钥
+bj9971020@bj9971020-PC:~$ curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+
+# 5.验证密钥
+bj9971020@bj9971020-PC:~$ sudo apt-key fingerprint 0EBFCD88
+
+# 6.设置阿里云镜像地址
+bj9971020@bj9971020-PC:~$ sudo add-apt-repository "deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/debian stretch stable"
+# 可能会出以下错误：
+Traceback (most recent call last):
+  File "/usr/bin/add-apt-repository", line 95, in <module>
+    sp = SoftwareProperties(options=options)
+  File "/usr/lib/python3/dist-packages/softwareproperties/SoftwareProperties.py", line 109, in __init__
+    self.reload_sourceslist()
+  File "/usr/lib/python3/dist-packages/softwareproperties/SoftwareProperties.py", line 599, in reload_sourceslist
+    self.distro.get_sources(self.sourceslist)    
+  File "/usr/lib/python3/dist-packages/aptsources/distro.py", line 93, in get_sources
+    (self.id, self.codename))
+aptsources.distro.NoDistroTemplateException: Error: could not find a distribution template for Deepin/n/a
+# 解决方法：
+# 先进入sources.list文件
+bj9971020@bj9971020-PC:~$ sudo vim /etc/apt/sources.list
+# 然后再文件最后一行加上此地址。加上此地址后，不需要重复执行第六步
+deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/debian stretch stable
+
+# 7.默认安装最新版docker引擎
+bj9971020@bj9971020-PC:~$ sudo apt-get update
+bj9971020@bj9971020-PC:~$ sudo apt-get install docker-ce docker-ce-cli containerd.io
+# (可选项)手动安装制定版本docker
+# 查看docker版本
+bj9971020@bj9971020-PC:~$ apt-cache madison docker-ce
+# 安装指定版本 将VERSION_STRING替换为指定的版本号
+bj9971020@bj9971020-PC:~$ sudo apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=<VERSION_STRING> containerd.io
+
+# 8.测试docker是否安装成功
+bj9971020@bj9971020-PC:~$ sudo docker version
+Client: Docker Engine - Community
+ Version:           19.03.13
+ API version:       1.40
+ Go version:        go1.13.15
+ Git commit:        4484c46d9d
+ Built:             Wed Sep 16 17:03:03 2020
+ OS/Arch:           linux/amd64
+ Experimental:      false
+
+Server: Docker Engine - Community
+ Engine:
+  Version:          19.03.13
+  API version:      1.40 (minimum version 1.12)
+  Go version:       go1.13.15
+  Git commit:       4484c46d9d
+  Built:            Wed Sep 16 17:01:33 2020
+  OS/Arch:          linux/amd64
+  Experimental:     false
+ containerd:
+  Version:          1.3.7
+  GitCommit:        8fba4e9a7d01810a393d5d25a3621dc101981175
+ runc:
+  Version:          1.0.0-rc10
+  GitCommit:        dc9208a3303feef5b3839f4323d9beb36df0a9dd
+ docker-init:
+  Version:          0.18.0
+  GitCommit:        fec3683
+
+# 9.运行hello-world
+bj9971020@bj9971020-PC:~$ sudo docker run hello-world
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+0e03bdcc26d7: Pull complete 
+Digest: sha256:8c5aeeb6a5f3ba4883347d3747a7249f491766ca1caa47e5da5dfcf6b9b717c0
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+# 10.查看docker镜像
+bj9971020@bj9971020-PC:~$ sudo docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+hello-world         latest              bf756fb1ae65        10 months ago       13.3kB
+```
+
+
+
 ***
+
+
 
 ##### 配置阿里云镜像加速
 
