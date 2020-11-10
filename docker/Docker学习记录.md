@@ -97,7 +97,7 @@ Server: Docker Engine - Community  # 社区版
 
 ```
 
-![image-20201109162347006](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20201109162347006.png)
+![](https://raw.githubusercontent.com/aJian1020/study-notes/master/docker/images/centos-run%20hello-world.jpg)
 
 ```shell
 8. 查看hello-world镜像
@@ -267,19 +267,19 @@ hello-world         latest              bf756fb1ae65        10 months ago       
 # 1.登录阿里云官网。地址：https://account.aliyun.com/login/qr_login.htm
 ```
 
-![image-20201109164538967](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20201109164538967.png)
+![image-20201109164538967](https://raw.githubusercontent.com/aJian1020/study-notes/master/docker/images/%E9%98%BF%E9%87%8C%E4%BA%91%E7%99%BB%E5%BD%95%E9%A1%B5%E9%9D%A2.png)
 
 ``` shell
 # 2. 搜索容器镜像服务
 ```
 
-![image-20201109164821937](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20201109164821937.png)
+![image-20201109164821937](https://raw.githubusercontent.com/aJian1020/study-notes/master/docker/images/%E9%98%BF%E9%87%8C%E4%BA%91%E6%90%9C%E7%B4%A2%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F%E6%9C%8D%E5%8A%A1.png)
 
 ```shell
 # 3. 根据阿里云文档进行操作
 ```
 
-![image-20201109165404734](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20201109165404734.png)
+![image-20201109165404734](https://raw.githubusercontent.com/aJian1020/study-notes/master/docker/images/%E9%98%BF%E9%87%8C%E4%BA%91%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E5%99%A8.png)
 
 ```shell
 # 4. 创建目录
@@ -302,7 +302,7 @@ hello-world         latest              bf756fb1ae65        10 months ago       
 # 7. 验证加速器地址是否配置成功
 ```
 
-![image-20201109170014707](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20201109170014707.png)
+![image-20201109170014707](https://raw.githubusercontent.com/aJian1020/study-notes/master/docker/images/%E6%B5%8B%E8%AF%95%E9%98%BF%E9%87%8C%E4%BA%91%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E6%98%AF%E5%90%A6%E6%88%90%E5%8A%9F.png)
 
 
 
@@ -318,7 +318,7 @@ hello-world         latest              bf756fb1ae65        10 months ago       
 
 > 官网地址：https://docs.docker.com/engine/reference/run/
 
-![image-20201109173331389](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20201109173331389.png)
+![image-20201109173331389](https://raw.githubusercontent.com/aJian1020/study-notes/master/docker/images/docker%E5%AE%98%E7%BD%91%E5%91%BD%E4%BB%A4.png)
 
 ###### docker run
 
